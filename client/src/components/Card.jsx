@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardContent, Typography, Avatar, IconButton  } from '@mui/material';
 import exampleData from '../../../data/example.js';
 import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export default function StudyCard (props) {
+  const [added, setAdded] = useState(false);
   const investigatorNameArray = exampleData.FullStudiesResponse.FullStudies[0].Study.ProtocolSection
   .SponsorCollaboratorsModule.ResponsibleParty
   .ResponsiblePartyInvestigatorFullName.split(' ');
@@ -12,7 +14,7 @@ export default function StudyCard (props) {
   const initials = `${investigatorNameArray[0][0]}${investigatorNameArray[1][0]}`;
 
   const nameCred = exampleData.FullStudiesResponse.FullStudies[0].Study.ProtocolSection.ContactsLocationsModule.OverallOfficialList.OverallOfficial[0].OverallOfficialName;
-  console.log(nameCred);
+
 
   const location = exampleData.FullStudiesResponse.FullStudies[0].Study.ProtocolSection.ContactsLocationsModule.LocationList.Location[0].LocationFacility;
 
@@ -28,8 +30,8 @@ export default function StudyCard (props) {
       </CardContent>
       <CardHeader avatar={<Avatar>
         {initials}
-      </Avatar>} title={nameCred} subheader={location} action={<IconButton aria-label='settings' size='large'>
-        <AddIcon fontSize='large'/>
+      </Avatar>} title={nameCred} subheader={location} action={<IconButton aria-label='settings' size='large' onClick={() => setAdded(!added)}> {added ? <RemoveIcon fontSize='large'/>:<AddIcon fontSize='large'/>  }
+
       </IconButton>}/>
 
     </Card>
