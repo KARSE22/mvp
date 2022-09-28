@@ -9,15 +9,16 @@ passport.use(
       callbackURL: "http://localhost:8080/api/auth/google/callback",
     },
     function (accessToken, refreshToken, profile, done) {
-      done(null, profile);
+      return done(null, profile);
+      //User.findOrCreate({googleId: profile.id}, function(err,user){ return cb(err,user)})
     }
   )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  return done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done(null, user);
+  return done(null, user);
 });

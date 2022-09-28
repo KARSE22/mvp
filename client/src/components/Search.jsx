@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import { TextField, Box } from '@mui/material';
 import axios from 'axios';
 
-export default function SearchBar() {
+export default function SearchBar({setStudies}) {
   const [searchExpression, setSearchExpression] = useState('');
+
 
   const handleChange = (e) => {
     setSearchExpression(e.target.value);
@@ -11,10 +12,12 @@ export default function SearchBar() {
 
   const handleClick = async() => {
     try {
-      const response = axios.get('/api/search/expression',{ params: {exp: searchExpression}});
+      const response = await axios.get('/api/search/expression',{ params: {exp: searchExpression}});
       console.log(response.data);
+      setSearchExpression('');
+      setStudies(response.data);
     } catch (err) {
-      console.lo(err);
+      console.log(err);
     }
 
   }
@@ -24,7 +27,7 @@ export default function SearchBar() {
     <Box sx={{width:'75%',
     }}>
 
-      <TextField fullWidth label="Search Projects or Health Topics" id="fullWidth" onChange={handleChange} />
+      <TextField value={searchExpression} fullWidth label="Search Projects or Health Topics" id="fullWidth" onChange={handleChange} />
     </Box>
     <button onClick={handleClick}>Search</button>
     </Box>

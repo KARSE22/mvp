@@ -10,6 +10,8 @@ router.get("/login/success", (req, res) => {
       message: "successful",
       user: req.user,
     });
+  } else {
+    res.send("no user");
   }
 });
 
@@ -25,11 +27,18 @@ router.get("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
+    req.session.destroy();
     res.redirect(CLIENT_URL);
   });
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile"],
+    prompt: "select_account",
+  })
+);
 
 router.get(
   "/google/callback",

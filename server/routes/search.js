@@ -3,6 +3,7 @@ const axios = require("axios");
 const url = "http://www.ClinicalTrials.gov/api/query/study_fields";
 const fieldString =
   "NCTId,BriefTitle,OverallStatus,ResponsiblePartyInvestigatorFullName,BriefSummary,DetailedDescription,Condition,Keyword,StudyType,TargetDuration,EligibilityCriteria,HealthyVolunteers,Gender,StdAge,StudyPopulation,OverallOfficialName,OverallOfficialAffiliation,LocationFacility,LocationState,LocationCountry";
+
 router.get("/expression", async (req, res) => {
   const { exp } = req.query;
   const queryObj = {
@@ -12,7 +13,12 @@ router.get("/expression", async (req, res) => {
     fmt: "JSON",
   };
   const studies = await axios.get(url, { params: queryObj });
-  res.json(studies.data);
+  const currentStudies = studies.data.StudyFieldsResponse.StudyFields.filter(
+    (study) => {
+      return study.OverallStatus[0] !== "Completed" && "Withdrawn";
+    }
+  );
+  res.json(currentStudies);
 });
 
 module.exports = router;

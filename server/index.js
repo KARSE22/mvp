@@ -21,10 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../client/public")));
 app.use(
   session({
-    secret: "somethingsecretgoeshere",
-    resave: true,
-    saveUninitialized: false,
-    cookie: { secure: false, expires: 60000 },
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 360000 },
   })
 );
 app.use(passport.initialize());
@@ -39,10 +39,6 @@ app.use(
 );
 app.use("/api/auth", authRoute);
 app.use("/api/search", searchRoute);
-
-app.get("/", (req, res) => {
-  res.send("hello");
-});
 
 app.listen(process.env.PORT, () => {
   console.log(`Research app listening on port ${process.env.PORT}`);

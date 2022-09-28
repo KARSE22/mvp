@@ -1,4 +1,5 @@
 import React, { useState, mouse } from 'react';
+import axios from 'axios';
 import {AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem, InputBase } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 
@@ -6,9 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import BiotechIcon from '@mui/icons-material/Biotech';
-
-const pages = ['Login', 'Studies','Dashboard'];
-const settings = ['Profile', 'Logout'];
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,13 +52,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-export default function NavBar({user}) {
-  console.log(user);
+export default function NavBar({user, setUser}) {
+  const pages = user ? ['Studies', 'Dashboard', 'Logout'] : ['Login'] ;
+  const settings = user ? ['Profile', 'Account'] : ['Profile', 'Login'] ;
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenNavMenu = (event) => {
+    console.log(event.currentTarget)
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
@@ -75,7 +76,8 @@ export default function NavBar({user}) {
   };
 
   const logout = () => {
-    window.open('/api/auth/logout', "_self")
+    setUser(null);
+    axios.get('/api/auth/logout').catch((err) => console.log(err))
   };
 
   return (
@@ -132,7 +134,7 @@ export default function NavBar({user}) {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center"><Link to='/login'>{page}</Link></Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -142,7 +144,7 @@ export default function NavBar({user}) {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -157,15 +159,37 @@ export default function NavBar({user}) {
             Research
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
+            {pages.map((page) => {
+              if (page === 'Login') {
+                return (
+                  <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+               <Link style={{color: 'inherit', textDecoration: 'none'}} to='/login'>{page}</Link>
               </Button>
-            ))}
+                )
+              } else if(page === 'Logout'){
+                return(
+                  <Button onClick={logout}
+                  key={page}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+
+                > {page}</Button>
+                )
+              }else {
+                return  (
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                  {page}
+                  </Button>
+                )
+              }
+             })}
           </Box>
           <Search>
             <SearchIconWrapper>
@@ -176,10 +200,10 @@ export default function NavBar({user}) {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 0 }}>
+          { user && <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: 2 }}>
-                <Avatar>{'H'}</Avatar>
+                <Avatar src={user.photos[0].value} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -204,8 +228,7 @@ export default function NavBar({user}) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>

@@ -6,16 +6,20 @@ import Login from './pages/Login.jsx';
 import SearchBar from './components/Search.jsx';
 import Display from './components/Display.jsx';
 import axios from 'axios';
+import Home from './pages/Home.jsx';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [studies, setStudies] = useState([]);
+
   useEffect(() => {
     axios.get('/api/auth/login/success').then((res) => {
       if(res.status === 200 ) {
         console.log(res.data.user);
         setUser(res.data.user)
       } else {
-        throw new Error('authentication has been failed');
+        throw new Error('authentication failed');
       }
     })
     .catch((err) => console.log(err))
@@ -23,12 +27,19 @@ const App = () => {
   return (
     <>
       <CssBaseline/>
-      <NavBar user={user}/>
-        <h1>Hello World</h1>
-        <SearchBar/>
+      <BrowserRouter>
+      <NavBar user={user} setUser={setUser}/>
+        {/* <h1>Hello World</h1>
+        <SearchBar setStudies={setStudies}/>
+        <Home/>
         <h2>Browse By Category</h2>
-        <Display/>
-        <Login/>
+        <Display studies={studies} /> */}
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
+          <Route path='/dashboard'></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
