@@ -1,16 +1,17 @@
 require("dotenv").config();
-require("./auth/gpassport.js");
+require("./auth/passport.js");
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const { queryParser } = require("express-query-parser");
 const morgan = require("morgan");
-const cookieSession = require("cookie-session");
 const session = require("express-session");
 const passport = require("passport");
 const authRoute = require("./routes/auth.js");
 const searchRoute = require("./routes/search.js");
-const db = require("../db");
+const userRoute = require("./routes/user.js");
+const homeRoute = require("./routes/home.js");
+require("../db");
 
 const app = express();
 
@@ -39,6 +40,8 @@ app.use(
 );
 app.use("/api/auth", authRoute);
 app.use("/api/search", searchRoute);
+app.use("/api/home", homeRoute);
+app.use("api/user", userRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Research app listening on port ${process.env.PORT}`);

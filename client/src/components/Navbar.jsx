@@ -53,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export default function NavBar({user, setUser}) {
-  const pages = user ? ['Studies', 'Dashboard', 'Logout'] : ['Login'] ;
+  const pages = user ? ['My Studies', 'Dashboard', 'Logout'] : ['Login'] ;
   const settings = user ? ['Profile', 'Account'] : ['Profile', 'Login'] ;
 
   const [anchorElNav, setAnchorElNav] = useState(null);

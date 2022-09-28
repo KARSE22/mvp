@@ -36,7 +36,7 @@ router.get("/logout", (req, res, next) => {
 router.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["profile"],
+    scope: ["profile", "email"],
     prompt: "select_account",
   })
 );
@@ -49,7 +49,10 @@ router.get(
   })
 );
 
-router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
+router.get(
+  "/github",
+  passport.authenticate("github", { scope: ["profile", "email"] })
+);
 
 router.get(
   "/github/callback",
