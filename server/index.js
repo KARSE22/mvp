@@ -9,6 +9,7 @@ const cookieSession = require("cookie-session");
 const session = require("express-session");
 const passport = require("passport");
 const authRoute = require("./routes/auth.js");
+const searchRoute = require("./routes/search.js");
 const db = require("../db");
 
 const app = express();
@@ -37,6 +38,7 @@ app.use(
   })
 );
 app.use("/api/auth", authRoute);
+app.use("/api/search", searchRoute);
 
 app.get("/", (req, res) => {
   res.send("hello");

@@ -1,16 +1,32 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TextField, Box } from '@mui/material';
+import axios from 'axios';
 
 export default function SearchBar() {
+  const [searchExpression, setSearchExpression] = useState('');
+
+  const handleChange = (e) => {
+    setSearchExpression(e.target.value);
+  };
+
+  const handleClick = async() => {
+    try {
+      const response = axios.get('/api/search/expression',{ params: {exp: searchExpression}});
+      console.log(response.data);
+    } catch (err) {
+      console.lo(err);
+    }
+
+  }
   return(
     <Box sx={{display: 'flex',
-    justifyContent: 'flex-end', mr:1}}>
+    justifyContent: 'center'}}>
     <Box sx={{width:'75%',
     }}>
 
-      <TextField fullWidth label="Search Projects or Health Topics" id="fullWidth" />
+      <TextField fullWidth label="Search Projects or Health Topics" id="fullWidth" onChange={handleChange} />
     </Box>
-
+    <button onClick={handleClick}>Search</button>
     </Box>
   )
 }
