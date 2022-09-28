@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema({
   facebookId: String,
   githubId: String,
   studyInterests: [String],
+  keywords: [String],
   medications: [String],
   diagnosis: [String],
   location: String,

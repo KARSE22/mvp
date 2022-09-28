@@ -17,7 +17,7 @@ const App = () => {
   const getHealthyStudies = async() => {
     try {
       const response = await axios.get('/api/home/initialPage');
-      // console.log(response.data);
+      console.log(response.data);
       // setSearchExpression('');
       setStudies(response.data);
     } catch (err) {
