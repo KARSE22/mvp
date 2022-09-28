@@ -3,6 +3,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import StudyCard from './components/Card.jsx';
 import NavBar from './components/Navbar.jsx';
 import Login from './pages/Login.jsx';
+import SearchBar from './components/Search.jsx';
+import Display from './components/Display.jsx';
 import axios from 'axios';
 
 const App = () => {
@@ -21,10 +23,11 @@ const App = () => {
   return (
     <>
       <CssBaseline/>
-      <NavBar/>
+      <NavBar user={user}/>
         <h1>Hello World</h1>
-        {/* <StudyCard/> */}
-        {/* <StudyCard/> */}
+        <SearchBar/>
+        <h2>Browse By Category</h2>
+        <Display/>
         <Login/>
     </>
   )
