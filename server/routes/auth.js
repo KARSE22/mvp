@@ -67,6 +67,7 @@ router.get(
 router.get(
   "/facebook/callback",
   passport.authenticate("facebook", {
+    authType: "reauthenticate",
     successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
   })
