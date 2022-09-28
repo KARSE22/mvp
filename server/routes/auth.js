@@ -28,6 +28,7 @@ router.get("/logout", (req, res, next) => {
       return next(err);
     }
     req.session.destroy();
+    res.clearCookie("connect.sid");
     res.redirect(CLIENT_URL);
   });
 });
@@ -43,6 +44,29 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
+    successRedirect: CLIENT_URL,
+    failureRedirect: "/login/failed",
+  })
+);
+
+router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    successRedirect: CLIENT_URL,
+    failureRedirect: "/login/failed",
+  })
+);
+
+router.get(
+  "/facebook",
+  passport.authenticate("facebook", { scope: ["public_profile"] })
+);
+
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
     successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
   })
