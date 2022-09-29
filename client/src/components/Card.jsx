@@ -1,20 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardContent, Typography, Avatar, IconButton, Box  } from '@mui/material';
+import { Card, CardHeader, CardContent, Typography, Avatar, IconButton, Box, CardMedia  } from '@mui/material';
 // import exampleData from '../../../data/example.js';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import axios from 'axios';
 import StudyModal from './Modal.jsx';
 
+
 export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user, setPersonalList, personalList}) {
   const [added, setAdded] = useState(null);
   const [selected, setSelected] = useState('');
+  const [img, setImg] = useState('https://images.unsplash.com/photo-1576671414121-aa0c81c869e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjc5NTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQ0NTc2MDA&ixlib=rb-1.2.1&q=80&w=400');
+
+  const getRandomImg = async() => {
+    let str = study.Keyword[0] || 'clinical research'
+    let img = await axios.get('/api/search/randomImg', {params: {keyword: str}})
+    return img.data;
+  }
 
   useEffect(() => {
-    if (window.localStorage.getItem(`${study.NCTId}`)) {
-      setAdded(true);
-    }
-    console.log(study.NCTId);
+    (async() => {
+      if (window.localStorage.getItem(`${study.NCTId}`)) {
+        setAdded(true);
+      }
+      // let image = await getRandomImg();
+      setImg(image);
+      console.log(image);
+    })();
+    // console.log(study.NCTId);
   }, [])
 
   const handleAdd = async() => {
@@ -65,6 +78,12 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
 
   return (
     <Card sx={{maxWidth: 365, bgcolor: 'pink'}}>
+       <CardMedia
+        component="img"
+        height="150"
+        image={img}
+        alt={study.Keyword[0]}
+      />
       <CardHeader title={title}></CardHeader>
       <CardContent >
         <Box component="div" sx={{overflow: "hidden", textOverflow: "ellipsis", height: '10.5rem'}}>
