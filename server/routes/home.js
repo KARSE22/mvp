@@ -7,21 +7,25 @@ const fieldString =
 
 router.get("/initialPage", async (req, res) => {
   //TODO:change to make request to database later
-  // const queryObj = {
-  //   expr: "healthy volunteers united states",
-  //   fields: fieldString,
-  //   max_rank: 300,
-  //   fmt: "JSON",
-  // };
-  // const studies = await axios.get(url, { params: queryObj });
-  // const currentStudies = studies.data.StudyFieldsResponse.StudyFields.filter(
-  //   (study) => {
-  //     return (
-  //       study.OverallStatus[0] !== "Completed" && "Withdrawn" && "Terminated"
-  //     );
-  //   }
-  // );
   const currentStudies = await Healthy.find({}).exec();
+  res.json(currentStudies);
+});
+
+router.get("/recent", async (req, res) => {
+  const queryObj = {
+    expr: "recent united states",
+    fields: fieldString,
+    max_rank: 300,
+    fmt: "JSON",
+  };
+  const studies = await axios.get(url, { params: queryObj });
+  const currentStudies = studies.data.StudyFieldsResponse.StudyFields.filter(
+    (study) => {
+      return (
+        study.OverallStatus[0] !== "Completed" && "Withdrawn" && "Terminated"
+      );
+    }
+  );
   res.json(currentStudies);
 });
 

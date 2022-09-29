@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardHeader, CardContent, Typography, Avatar, IconButton  } from '@mui/material';
+import { Card, CardHeader, CardContent, Typography, Avatar, IconButton, Box  } from '@mui/material';
 // import exampleData from '../../../data/example.js';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -52,16 +52,18 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
   //then the database will also update the user array of studies which will return the updated data and iterate over the new array
 
   return (
-    <Card sx={{maxWidth: 345, bgcolor: 'pink'}}>
+    <Card sx={{maxWidth: 365, bgcolor: 'pink'}}>
       <CardHeader title={title}></CardHeader>
-      <CardContent>
-        <Typography>{description}</Typography>
+      <CardContent >
+        <Box component="div" sx={{overflow: "hidden", textOverflow: "ellipsis", height: '10.5rem'}}>
+        {description}
+        </Box>
+      <StudyModal study={study} title={title} investigatorName={investigatorName} officialName={officialName} facilityLocation={facilityLocation} description={description} user={user} />
       </CardContent>
       <CardHeader avatar={<Avatar>
         {initials}
       </Avatar>} title={officialName} subheader={facilityLocation} action={user && <IconButton aria-label='settings' size='large' onClick={handleAdd}> {added ? <RemoveIcon fontSize='large'/>:<AddIcon fontSize='large'/>  }
       </IconButton>}/>
-      <StudyModal study={study} title={title} investigatorName={investigatorName} officialName={officialName} facilityLocation={facilityLocation} description={description} user={user} />
     </Card >
   )
 }
