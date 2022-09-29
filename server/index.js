@@ -2,6 +2,7 @@ require("dotenv").config();
 require("./auth/passport.js");
 const path = require("path");
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { queryParser } = require("express-query-parser");
 const morgan = require("morgan");
@@ -18,13 +19,14 @@ const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../client/public")));
 app.use(
   session({
     secret: process.env.SECRET_KEY,
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: { secure: false, maxAge: 360000 },
   })

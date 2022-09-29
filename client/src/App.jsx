@@ -43,19 +43,24 @@ const App = () => {
     getHealthyStudies();
     getRecentStudies();
     axios.get('/api/auth/login/success').then((res) => {
-      if(res.status === 200 ) {
+      if(res.status === 200) {
         console.log(res.data.user);
         setUser(res.data.user);
-        if (!window.localStorage.getItem('user')) {
-          window.localStorage.setItem('user', 'true')
-          setUser(res.data.user);
-        }
+
       } else {
         throw new Error('authentication failed');
       }
     })
     .catch((err) => console.log(err))
-  }, [])
+  }, []);
+
+  useEffect(()=> {
+    if (user) {
+      if (!window.localStorage.getItem('user')) {
+        window.localStorage.setItem('user', 'true')
+      }
+    }
+  }, [user])
   return (
     <>
       <CssBaseline/>

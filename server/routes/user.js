@@ -76,4 +76,10 @@ router.get("/personalList", async (req, res) => {
   res.json(foundStudies);
 });
 
+router.get("/personalListIds", async (req, res) => {
+  const { user } = req.query;
+  const foundUser = await User.find({ email: user }).exec();
+  res.json(foundUser[0].studyInterests);
+});
+
 module.exports = router;
