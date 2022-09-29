@@ -46,7 +46,10 @@ const App = () => {
       if(res.status === 200 ) {
         console.log(res.data.user);
         setUser(res.data.user);
-
+        // if (!window.localStorage.getItem('user')) {
+        //   window.localStorage.setItem('user', 'true')
+        //   setUser(res.data.user);
+        // }
       } else {
         throw new Error('authentication failed');
       }
