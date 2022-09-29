@@ -11,6 +11,9 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
   const [selected, setSelected] = useState('');
 
   useEffect(() => {
+    if (window.localStorage.getItem(`${study.NCTId}`)) {
+      setAdded(true);
+    }
     console.log(study.NCTId);
   }, [])
 
@@ -23,6 +26,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         user: user,
       study: study,
     }).catch((err) => console.log(err))
+      window.localStorage.setItem(`${study.NCTId}`, 'true');
       console.log(response.data);
       console.log('added', study.NCTId);
 
@@ -40,6 +44,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         user: user,
         study: study,
       }).catch((err) => console.log(err))
+      window.localStorage.removeItem(`${study.NCTId}`)
       console.log(response.data);
       // console.log(personalList)
     }
