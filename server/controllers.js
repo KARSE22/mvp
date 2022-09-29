@@ -28,9 +28,7 @@ module.exports = {
         StudyType: study.StudyType,
         TargetDuration: study.TargetDuration,
       },
-      (err, result) => {
-        console.log(result);
-      }
+      (err, result) => {}
     );
   },
   getHealthyStudies: async function () {
