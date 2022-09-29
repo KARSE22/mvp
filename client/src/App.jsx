@@ -16,6 +16,7 @@ const App = () => {
   const [studies, setStudies] = useState([]);
   const [searchedStudies, setSearchedStudies] = useState([]);
   const [recentStudies, setRecentStudies] = useState([]);
+  const [studyIds, setStudyIds] = useState([]);
 
 
   const getHealthyStudies = async() => {
@@ -39,6 +40,16 @@ const App = () => {
     }
   }
 
+  const getStudyIds = async(email) => {
+    try {
+      const ids = await axios.get('/api/user/personalListIds', {params: {user : email}});
+      console.log(ids.data);
+      setStudyIds(ids.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   useEffect(() => {
     getHealthyStudies();
     getRecentStudies();
@@ -46,12 +57,16 @@ const App = () => {
       if(res.status === 200) {
         console.log(res.data.user);
         setUser(res.data.user);
+        getStudyIds(res.data.user.email);
 
       } else {
         throw new Error('authentication failed');
       }
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.log(err));
+    // if (window.localStorage.getItem('user')) {
+    //   getStudyIds();
+    // }
   }, []);
 
   useEffect(()=> {
@@ -60,7 +75,8 @@ const App = () => {
         window.localStorage.setItem('user', 'true')
       }
     }
-  }, [user])
+  }, [user]);
+
   return (
     <>
       <CssBaseline/>
