@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { TextField, Box } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-export default function SearchBar({setStudies}) {
+export default function SearchBar({setStudies, setSearchedStudies}) {
+  const navigate = useNavigate();
   const [searchExpression, setSearchExpression] = useState('');
 
 
@@ -15,7 +17,8 @@ export default function SearchBar({setStudies}) {
       const response = await axios.get('/api/search/expression',{ params: {exp: searchExpression}});
       console.log(response.data);
       setSearchExpression('');
-      setStudies(response.data);
+      setSearchedStudies(response.data);
+      navigate('/search');
     } catch (err) {
       console.log(err);
     }

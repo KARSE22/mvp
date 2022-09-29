@@ -6,8 +6,8 @@ import Display from '../components/Display.jsx';
 
 //TODO: when a user is not logged in, they will get the healthy individuals query, but when they are logged in, they will get studies based on the interests they put in the database
 
-export default function Home({studies, user}) {
-  const [initialStudies, setInitialStudies] = useState([]);
+export default function Home({studies, user, setStudies, setSearchedStudies}) {
+  // const [initialStudies, setInitialStudies] = useState([]);
 
   // useEffect(() => {
   //   const getHealthyStudies = async() => {
@@ -35,7 +35,7 @@ export default function Home({studies, user}) {
     // </Box> */}
     // </Box>
     <Box sx={{m: 10}}>
-      <SearchBar/>
+      <SearchBar setStudies={setStudies} setSearchedStudies={setSearchedStudies}/>
       { studies.length > 0 && <Display user={user} studies={studies}/>}
     </Box>
   )

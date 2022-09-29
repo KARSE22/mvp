@@ -15,11 +15,11 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
     if (added === null || added === false) {
       // setPersonalList([...personalList, study])
       //add to database
-     const response =  await axios.post('/api/user/personalList', {
-       user: user,
+      const response =  await axios.post('/api/user/personalList', {
+        user: user,
       study: study,
     }).catch((err) => console.log(err))
-     console.log(response.data);
+      console.log(response.data);
       console.log('added', study.NCTId);
 
       // axios
@@ -34,8 +34,8 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
       // setPersonalList(newList);
       const response =  await axios.put('/api/user/personalList', {
         user: user,
-       study: study,
-     }).catch((err) => console.log(err))
+        study: study,
+      }).catch((err) => console.log(err))
       console.log(response.data);
       // console.log(personalList)
     }

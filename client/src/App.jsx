@@ -13,6 +13,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 const App = () => {
   const [user, setUser] = useState(null);
   const [studies, setStudies] = useState([]);
+  const [searchedStudies, setSearchedStudies] = useState([]);
+
 
   const getHealthyStudies = async() => {
     try {
@@ -49,9 +51,10 @@ const App = () => {
         <h2>Browse By Category</h2>
         <Display studies={studies} /> */}
         <Routes>
-          <Route path='/' element={<Home studies={studies} user={user}/>}/>
+          <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies}/>}/>
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
           <Route path='/mystudies' element={<StudyList user={user}/>}></Route>
+          <Route path='/search' element={<Home studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies}/>}/>
         </Routes>
       </BrowserRouter>
     </>
