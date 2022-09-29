@@ -3,11 +3,11 @@ const router = require("express").Router();
 const User = require("../../db/models/user.js");
 const Study = require("../../db/models/studies");
 
-router.get("/myStudies", async (req, res) => {
-  //TODO:make a call to database to get user's studies
-  //send the studies back
-  //   res.json();
-});
+// router.get("/myStudies", async (req, res) => {
+//   //TODO:make a call to database to get user's studies
+//   //send the studies back
+//   //   res.json();
+// });
 
 router.get("/account", async (req, res) => {
   //need to query database for account/profile information

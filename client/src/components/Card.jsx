@@ -8,39 +8,38 @@ import axios from 'axios';
 export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user}) {
   const [added, setAdded] = useState(null);
   const [selected, setSelected] = useState('');
-  const [personalList, setPersonalList] = useState([]);
 
 
   const handleAdd = async() => {
     setAdded(!added);
     if (added === null || added === false) {
-      setPersonalList([...personalList, study])
+      // setPersonalList([...personalList, study])
       //add to database
      const response =  await axios.post('/api/user/personalList', {
        user: user,
       study: study,
-    })
+    }).catch((err) => console.log(err))
      console.log(response.data);
       console.log('added', study.NCTId);
-      console.log(personalList);
+
       // axios
     }
     else if (added ) {
       //remove from database
       const currId = study.NCTId;
       console.log('remove', study.NCTId);
-      const newList = personalList.filter((study) => {
-        return study.NCTId !== currId;
-      })
-      setPersonalList(newList);
+      // const newList = personalList.filter((study) => {
+      //   return study.NCTId !== currId;
+      // })
+      // setPersonalList(newList);
       const response =  await axios.put('/api/user/personalList', {
         user: user,
        study: study,
-     })
+     }).catch((err) => console.log(err))
       console.log(response.data);
-      console.log(personalList)
+      // console.log(personalList)
     }
-  }
+  };
   const investigatorNameArray = investigatorName.split(' ');
 
 

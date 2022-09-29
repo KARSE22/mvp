@@ -178,6 +178,16 @@ export default function NavBar({user, setUser}) {
 
                 > {page}</Button>
                 )
+              } else if(page === 'My Studies') {
+                return (
+                  <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+               <Link style={{color: 'inherit', textDecoration: 'none'}} to='/mystudies'>{page}</Link>
+              </Button>
+                )
               }else {
                 return  (
                   <Button
