@@ -4,6 +4,7 @@ import { Card, CardHeader, CardContent, Typography, Avatar, IconButton  } from '
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import axios from 'axios';
+import StudyModal from './Modal.jsx';
 
 export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user}) {
   const [added, setAdded] = useState(null);
@@ -60,8 +61,8 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         {initials}
       </Avatar>} title={officialName} subheader={facilityLocation} action={user && <IconButton aria-label='settings' size='large' onClick={handleAdd}> {added ? <RemoveIcon fontSize='large'/>:<AddIcon fontSize='large'/>  }
       </IconButton>}/>
-
-    </Card>
+      <StudyModal study={study} title={title} investigatorName={investigatorName} officialName={officialName} facilityLocation={facilityLocation} description={description} user={user} />
+    </Card >
   )
 }
 
