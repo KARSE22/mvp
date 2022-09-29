@@ -12,6 +12,7 @@ const searchRoute = require("./routes/search.js");
 const userRoute = require("./routes/user.js");
 const homeRoute = require("./routes/home.js");
 require("../db");
+const studyRoute = require("./routes/studies.js");
 
 const app = express();
 
@@ -41,7 +42,8 @@ app.use(
 app.use("/api/auth", authRoute);
 app.use("/api/search", searchRoute);
 app.use("/api/home", homeRoute);
-app.use("api/user", userRoute);
+app.use("/api/user", userRoute);
+app.use("/api/studies", studyRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Research app listening on port ${process.env.PORT}`);

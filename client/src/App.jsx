@@ -49,9 +49,9 @@ const App = () => {
         <h2>Browse By Category</h2>
         <Display studies={studies} /> */}
         <Routes>
-          <Route path='/' element={<Home studies={studies}/>}/>
+          <Route path='/' element={<Home studies={studies} user={user}/>}/>
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
-          <Route path='/mystudies' element={<StudyList/>}></Route>
+          <Route path='/mystudies' element={<StudyList user={user}/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

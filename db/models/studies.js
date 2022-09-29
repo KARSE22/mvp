@@ -21,7 +21,7 @@ const studySchema = mongoose.Schema({
     type: Array,
     default: [],
   },
-  stdAge: [String],
+  StdAge: [String],
   StudyPopulation: [String],
   StudyType: [String],
   TargetDuration: [String],
