@@ -6,7 +6,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import axios from 'axios';
 import StudyModal from './Modal.jsx';
 
-export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user}) {
+export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user, setPersonalList, personalList}) {
   const [added, setAdded] = useState(null);
   const [selected, setSelected] = useState('');
 
@@ -44,6 +44,10 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         user: user,
         study: study,
       }).catch((err) => console.log(err))
+      if (personalList !== undefined) {
+        let index = personalList.indexOf(study.NCTId);
+        personalList.splice(index, 1);
+      }
       window.localStorage.removeItem(`${study.NCTId}`)
       console.log(response.data);
       // console.log(personalList)
