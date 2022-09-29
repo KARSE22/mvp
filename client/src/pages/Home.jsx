@@ -38,11 +38,11 @@ export default function Home({studies, user, setStudies, setSearchedStudies, tit
       <SearchBar setStudies={setStudies} setSearchedStudies={setSearchedStudies}/>
       <h1 style={{marginLeft: '11%', marginBottom: 0}}>{title}</h1>
       <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-      { studies.length > 0 && <Display user={user} studies={studies}/>}
+      { studies.length > 0 && <Display setSearchedStudies={setSearchedStudies}user={user} studies={studies}/>}
       </Box>
       <h1 style={{marginLeft: '11%', marginBottom: 0}}>Recent Studies</h1>
       <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-      { recentStudies.length > 0 && <Display user={user} studies={recentStudies}/>}
+      { recentStudies.length > 0 && <Display setSearchedStudies={setSearchedStudies} user={user} studies={recentStudies}/>}
       </Box>
     </Box>
   )

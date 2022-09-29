@@ -38,7 +38,7 @@ export default function SearchDisplay({studies, user, setStudies, setSearchedStu
       <SearchBar setStudies={setStudies} setSearchedStudies={setSearchedStudies}/>
       <h1 style={{marginLeft: '11%', marginBottom: 0}}>{title}</h1>
       <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-      { studies.length > 0 && <Display user={user} studies={studies}/>}
+      { studies.length > 0 && <Display setSearchedStudies={setSearchedStudies} user={user} studies={studies}/>}
       </Box>
     </Box>
   )

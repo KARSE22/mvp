@@ -214,7 +214,7 @@ export default function NavBar({user, setUser}) {
           { user && <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: 2 }}>
-                <Avatar src={user.photos[0].value} referrerPolicy="no-referrer" />
+                <Avatar src={ user.photos[0].value } referrerPolicy="no-referrer" />
               </IconButton>
             </Tooltip>
             <Menu

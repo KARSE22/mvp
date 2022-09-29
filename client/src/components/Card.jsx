@@ -5,12 +5,13 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import axios from 'axios';
 import StudyModal from './Modal.jsx';
+import ColorChips from './chip.jsx';
 
 
-export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user, setPersonalList, personalList}) {
+export default function StudyCard ({ study, title, investigatorName, officialName, facilityLocation, description, user, setPersonalList, personalList, keywords, setSearchedStudies}) {
   const [added, setAdded] = useState(null);
   const [selected, setSelected] = useState('');
-  const [img, setImg] = useState('https://images.unsplash.com/photo-1576671414121-aa0c81c869e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjc5NTR8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQ0NTc2MDA&ixlib=rb-1.2.1&q=80&w=400');
+  const [img, setImg] = useState('https://picsum.photos/200/300');
 
   const getRandomImg = async() => {
     let str = study.Keyword[0] || 'clinical research'
@@ -24,10 +25,11 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         setAdded(true);
       }
       // let image = await getRandomImg();
-      setImg(image);
-      console.log(image);
+      // setImg(image);
+      // console.log(image);
     })();
     // console.log(study.NCTId);
+    // console.log(keywords);
   }, [])
 
   const handleAdd = async() => {
@@ -70,7 +72,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
 
 
   const initials = `${investigatorNameArray[0][0]}${investigatorNameArray[1][0]}`;
-
+  console.log(setSearchedStudies)
 
 //TODO: when they click add, it is going to send a post request to add
   //which will call the database to find or create the study
@@ -78,7 +80,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
 
   return (
     <Card sx={{maxWidth: 365, bgcolor: 'pink'}}>
-       <CardMedia
+      <CardMedia
         component="img"
         height="150"
         image={img}
@@ -90,6 +92,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         {description}
         </Box>
       <StudyModal study={study} title={title} investigatorName={investigatorName} officialName={officialName} facilityLocation={facilityLocation} description={description} user={user} />
+      <ColorChips setSearchedStudies={setSearchedStudies} keywords={keywords}/>
       </CardContent>
       <CardHeader avatar={<Avatar>
         {initials}

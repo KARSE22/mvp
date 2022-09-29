@@ -43,7 +43,7 @@ passport.use(
         {
           firstName: profile.givenName,
           lastName: profile.familyName,
-          email: profile.emails[0].value,
+          email: profile.emails,
           photos: profile.photos,
         },
         { upsert: true, new: true, setDefaultsOnInsert: true },
@@ -63,11 +63,11 @@ passport.use(
     },
     function (accessToken, refreshToken, profile, cb) {
       User.findOneAndUpdate(
-        { faceBookId: profile.id },
+        { facebookId: profile.id },
         {
           firstName: profile.givenName,
           lastName: profile.familyName,
-          email: profile.emails[0].value,
+          email: profile.emails,
           photos: profile.photos,
         },
         { upsert: true, new: true, setDefaultsOnInsert: true },
