@@ -77,7 +77,7 @@ export default function NavBar({user, setUser}) {
 
   const logout = () => {
     setUser(null);
-    // window.localStorage.clear();
+    window.localStorage.clear();
     axios.get('/api/auth/logout').catch((err) => console.log(err))
   };
 
