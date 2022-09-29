@@ -42,7 +42,7 @@ export default function Home({studies, user, setStudies, setSearchedStudies, tit
       </Box>
       <h1 style={{marginLeft: '11%', marginBottom: 0}}>Recent Studies</h1>
       <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-      { recentStudies.length > 0 && <Display user={user} studies={studies}/>}
+      { recentStudies.length > 0 && <Display user={user} studies={recentStudies}/>}
       </Box>
     </Box>
   )

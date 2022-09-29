@@ -89,7 +89,7 @@ const App = () => {
         <h2>Browse By Category</h2>
         <Display studies={studies} /> */}
         <Routes>
-          <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies} title={'Featured Studies'}recentStudies={recentStudies}/> }/>
+          <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies} title={'Featured Studies'} recentStudies={recentStudies}/> }/>
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
           <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList user={user}/>}></Route>
           <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} title={`Search Results`}/>}/>

@@ -10,6 +10,9 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
   const [added, setAdded] = useState(null);
   const [selected, setSelected] = useState('');
 
+  useEffect(() => {
+    console.log(study.NCTId);
+  }, [])
 
   const handleAdd = async() => {
     setAdded(!added);
