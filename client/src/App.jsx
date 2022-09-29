@@ -44,6 +44,9 @@ const App = () => {
     try {
       const ids = await axios.get('/api/user/personalListIds', {params: {user : email}});
       console.log(ids.data);
+      ids.data.forEach((id => {
+        window.localStorage.setItem(`${id}`, 'true');
+      }))
       setStudyIds(ids.data);
     } catch (err) {
       console.log(err);
@@ -64,9 +67,7 @@ const App = () => {
       }
     })
     .catch((err) => console.log(err));
-    // if (window.localStorage.getItem('user')) {
-    //   getStudyIds();
-    // }
+
   }, []);
 
   useEffect(()=> {
