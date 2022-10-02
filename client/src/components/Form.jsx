@@ -25,12 +25,12 @@ const style = {
   p: 4,
 };
 
-export default function FormModal({setSearchedStudies}) {
+export default function FormModal({setSearchedStudies, user}) {
   const navigate = useNavigate();
   let initialValues ={};
   if (window.localStorage.getItem('user')) {
     initialValues = {
-      email: 'v.karrissa1@gmail.com',
+      email: window.localStorage.getItem('email'),
       age: null,
       med1:'',
       med2: '',

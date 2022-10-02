@@ -91,6 +91,9 @@ const App = () => {
     if (user) {
       if (!window.localStorage.getItem('user')) {
         window.localStorage.setItem('user', 'true')
+        if (!window.localStorage.getItem('email')) {
+          window.localStorage.setItem('email', `${user.email}`)
+        }
       }
     }
   }, [user]);
@@ -110,7 +113,7 @@ const App = () => {
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
           <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList setSearchedStudies={setSearchedStudies}user={user} personalList={personalList} setPersonalList={setPersonalList}/>}></Route>
           <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} personalList={personalList} setPersonalList={setPersonalList} title={`Search Results`}/>}/>
-          <Route path='/dashboard' element={!user ? <Navigate to='/login'/> :<Dashboard setSearchedStudies={setSearchedStudies}/>}></Route>
+          <Route path='/dashboard' element={!user ? <Navigate to='/login'/> :<Dashboard setSearchedStudies={setSearchedStudies} user={user}/>}></Route>
         </Routes>
       </BrowserRouter>
     </>
