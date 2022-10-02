@@ -18,7 +18,7 @@ export default function Login(props) {
 
   return (
     <div style={{height: "calc(100vh - 50px)", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-      <div style={{width: '60%', height: '75%', boxShadow: '0px 5px 33px -21px rgba(66, 68, 90, 1)', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px', alignContent: 'center', justifyContent: 'center'}}>
+      <div style={{width: '60%', height: '75%', boxShadow: '0px 5px 33px -21px rgba(66, 68, 90, 1)', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '20px', alignContent: 'center', justifyContent: 'center', backgroundColor: '#fef7ff'}}>
         <h1 >Login</h1>
         <div style={{width: '150px', padding: '15px 25px', borderRadius: '5px', color: 'white', backgroundColor: '#df4930', display: 'flex', alignItems: 'center', fontWeight: 'bold', marginBottom: '5px'}} onClick={google}>
           <GoogleIcon sx={{width: 20, heigh: 20, mr: 1}}/>Google
