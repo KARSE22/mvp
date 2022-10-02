@@ -10,6 +10,7 @@ import Home from './pages/Home.jsx';
 import SearchDisplay from './pages/SearchDisplay.jsx'
 import StudyList from './pages/StudyList.jsx';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Dashboard from './pages/Dashboard.jsx';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -109,6 +110,7 @@ const App = () => {
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
           <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList setSearchedStudies={setSearchedStudies}user={user} personalList={personalList} setPersonalList={setPersonalList}/>}></Route>
           <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} personalList={personalList} setPersonalList={setPersonalList} title={`Search Results`}/>}/>
+          <Route path='/dashboard' element={!user ? <Navigate to='/login'/> :<Dashboard setSearchedStudies={setSearchedStudies}/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

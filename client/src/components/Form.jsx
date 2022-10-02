@@ -11,6 +11,7 @@ import { Grid, TextField, Paper} from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider, styled, useTheme } from '@mui/material/styles';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: 'absolute',
@@ -24,10 +25,10 @@ const style = {
   p: 4,
 };
 
-export default function FormModal({user}) {
+export default function FormModal({setSearchedStudies}) {
+  const navigate = useNavigate();
   let initialValues ={};
   if (window.localStorage.getItem('user')) {
-    console.log(user)
     initialValues = {
       email: 'v.karrissa1@gmail.com',
       age: null,
@@ -57,6 +58,8 @@ export default function FormModal({user}) {
     try{
       const response = await axios.post('api/user/infoForm', info)
       console.log(response.data);
+      setSearchedStudies(response.data);
+      navigate('/search');
     } catch(err) {
       console.log(err)
     }

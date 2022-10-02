@@ -189,7 +189,16 @@ export default function NavBar({user, setUser}) {
                <Link style={{color: 'inherit', textDecoration: 'none'}} to='/mystudies'>{page}</Link>
               </Button>
                 )
-              }else {
+              } else if (page === 'Dashboard') {
+                return (
+                  <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+               <Link style={{color: 'inherit', textDecoration: 'none'}} to='/dashboard'>{page}</Link>
+              </Button>)
+              } else {
                 return  (
                   <Button
                     key={page}

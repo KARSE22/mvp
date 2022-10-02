@@ -24,17 +24,17 @@ export default function Home({studies, user, setStudies, setSearchedStudies, tit
   //   getHealthyStudies();
   // }, [])
   return (
-    <FormModal user={user}/>
-    // <Box sx={{m: 10}}>
-    //   <SearchBar setStudies={setStudies} setSearchedStudies={setSearchedStudies} setPersonalList={setPersonalList} personalList={personalList}/>
-    //   <h1 style={{marginLeft: '11%', marginBottom: 0}}>{title}</h1>
-    //   <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-    //   { studies.length > 0 && <Display setSearchedStudies={setSearchedStudies}user={user} studies={studies} personalList={personalList} setPersonalList={setPersonalList}/>}
-    //   </Box>
-    //   <h1 style={{marginLeft: '11%', marginBottom: 0}}>Recent Studies</h1>
-    //   <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
-    //   { recentStudies.length > 0 && <Display setSearchedStudies={setSearchedStudies} user={user} studies={recentStudies} personalList={personalList} setPersonalList={setPersonalList}/>}
-    //   </Box>
-    // </Box>
+    // <FormModal user={user}/>
+    <Box sx={{m: 10}}>
+      <SearchBar setStudies={setStudies} setSearchedStudies={setSearchedStudies} setPersonalList={setPersonalList} personalList={personalList}/>
+      <h1 style={{marginLeft: '11%', marginBottom: 0}}>{title}</h1>
+      <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
+      { studies.length > 0 && <Display setSearchedStudies={setSearchedStudies}user={user} studies={studies} personalList={personalList} setPersonalList={setPersonalList}/>}
+      </Box>
+      <h1 style={{marginLeft: '11%', marginBottom: 0}}>Recent Studies</h1>
+      <Box sx={{display: 'flex', justifyContent: 'center', alignContent: 'center'}}>
+      { recentStudies.length > 0 && <Display setSearchedStudies={setSearchedStudies} user={user} studies={recentStudies} personalList={personalList} setPersonalList={setPersonalList}/>}
+      </Box>
+    </Box>
   )
 }
