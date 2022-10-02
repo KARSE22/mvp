@@ -17,6 +17,21 @@ const App = () => {
   const [searchedStudies, setSearchedStudies] = useState([]);
   const [recentStudies, setRecentStudies] = useState([]);
   const [studyIds, setStudyIds] = useState([]);
+  const [personalList, setPersonalList] = useState([])
+
+  const getStudiesList = async(user) => {
+    try {
+      if(window.localStorage.getItem('user')) {
+        axios.get('/api/user/personalList', {params: {user: user.email}}).then((res) => {
+          console.log(res.data)
+          setPersonalList(res.data)
+        })
+
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  };
 
 
   const getHealthyStudies = async() => {
@@ -61,6 +76,7 @@ const App = () => {
         console.log(res.data.user);
         setUser(res.data.user);
         getStudyIds(res.data.user.email);
+        getStudiesList(res.data.user);
 
       } else {
         throw new Error('authentication failed');
@@ -89,10 +105,10 @@ const App = () => {
         <h2>Browse By Category</h2>
         <Display studies={studies} /> */}
         <Routes>
-          <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies} title={'Featured Studies'} recentStudies={recentStudies}/> }/>
+          <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies} title={'Featured Studies'} recentStudies={recentStudies} setPersonalList={setPersonalList} personalList={personalList}/> }/>
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
-          <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList user={user}/>}></Route>
-          <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} title={`Search Results`}/>}/>
+          <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList user={user} personalList={personalList} setPersonalList={setPersonalList}/>}></Route>
+          <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} personalList={personalList} setPersonalList={setPersonalList} title={`Search Results`}/>}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -24,9 +24,9 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
       if (window.localStorage.getItem(`${study.NCTId}`)) {
         setAdded(true);
       }
-      let image = await getRandomImg();
-      setImg(image);
-      console.log(image);
+      // let image = await getRandomImg();
+      // setImg(image);
+      // console.log(image);
     })();
     // console.log(study.NCTId);
     // console.log(keywords);
@@ -41,6 +41,9 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
         user: user,
       study: study,
     }).catch((err) => console.log(err))
+    //should call for personalList again
+      //update personal list
+      setPersonalList([...personalList, study]);
       window.localStorage.setItem(`${study.NCTId}`, 'true');
       console.log(response.data);
       console.log('added', study.NCTId);
@@ -58,10 +61,13 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
       const response =  await axios.put('/api/user/personalList', {
         user: user,
         study: study,
-      }).catch((err) => console.log(err))
+      }).catch((err) => console.log(err));
       if (personalList !== undefined) {
-        let index = personalList.indexOf(study.NCTId);
-        personalList.splice(index, 1);
+        // let index = personalList.indexOf(study.NCTId);
+        let current = study;
+        let newList = personalList.filter((item) => item.NCTId !== study.NCTId);
+        // newList = newList.splice(index, 1);
+        setPersonalList(newList);
       }
       window.localStorage.removeItem(`${study.NCTId}`)
       console.log(response.data);
@@ -72,7 +78,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
 
 
   const initials = `${investigatorNameArray[0][0]}${investigatorNameArray[1][0]}`;
-  console.log(setSearchedStudies)
+
 
 //TODO: when they click add, it is going to send a post request to add
   //which will call the database to find or create the study
