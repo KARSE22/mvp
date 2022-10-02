@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { TextField, Box } from '@mui/material';
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
 import axios from 'axios';
 
 export default function SearchBar({setStudies, setSearchedStudies}) {
@@ -32,7 +33,7 @@ export default function SearchBar({setStudies, setSearchedStudies}) {
 
       <TextField value={searchExpression} fullWidth label="Search Projects or Health Topics" id="fullWidth" onChange={handleChange} />
     </Box>
-    <button onClick={handleClick}>Search</button>
+    <Button sx={{ml:'1px', backgroundColor: '#d8bfd8' }} variant="contained" onClick={handleClick}>Search</Button>
     </Box>
   )
 }
