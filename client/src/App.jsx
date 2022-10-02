@@ -107,7 +107,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home studies={studies} user={user} setStudies={setStudies} setSearchedStudies={setSearchedStudies} title={'Featured Studies'} recentStudies={recentStudies} setPersonalList={setPersonalList} personalList={personalList}/> }/>
           <Route path='/login' element={user ? <Navigate to='/'/> : <Login/>}/>
-          <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList user={user} personalList={personalList} setPersonalList={setPersonalList}/>}></Route>
+          <Route path='/mystudies' element={!user ? <Navigate to='/login'/> : <StudyList setSearchedStudies={setSearchedStudies}user={user} personalList={personalList} setPersonalList={setPersonalList}/>}></Route>
           <Route path='/search' element={<SearchDisplay studies={searchedStudies} user={user} setStudies={setStudies}  setSearchedStudies={setSearchedStudies} personalList={personalList} setPersonalList={setPersonalList} title={`Search Results`}/>}/>
         </Routes>
       </BrowserRouter>
