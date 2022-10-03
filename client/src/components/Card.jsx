@@ -24,6 +24,7 @@ export default function StudyCard ({ study, title, investigatorName, officialNam
       if (window.localStorage.getItem(`${study.NCTId}`)) {
         setAdded(true);
       }
+      //TODO: uncomment if you want to see pictures
       // let image = await getRandomImg();
       // setImg(image);
       // console.log(image);

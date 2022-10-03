@@ -28,7 +28,7 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 360000 },
+    cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 },
   })
 );
 app.use(passport.initialize());
