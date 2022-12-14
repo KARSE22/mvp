@@ -2,7 +2,7 @@
 
 Research You is an innovative clinical research application that enables users to easily search for and be matched with local research studies they may be eligible for. With a streamlined and user-friendly design, users can quickly and easily find research studies that fit their interests and qualifications. The app allows users to save the research studies to their profile and view them at any time. I hope to add more features in the future, including making it easy for users to contact the research study teams directly, allowing for a more efficient and personalized experience. With this application, users can now easily find and participate in research studies that are right for them.
 
-# Table of Contents
+## Table of Contents
 
 - [Getting Started](#getting-started)
   - [Pre-Installation Requirements](#pre-installation-requirements)
@@ -17,7 +17,8 @@ Research You is an innovative clinical research application that enables users t
 
 - [Tech Stack](#tech-stack)
 
-# Getting Started
+## Getting Started
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Pre-Installation Requirements
@@ -48,23 +49,27 @@ Compiles code
 npm run dev
 ```
 
-# Product Features
+## Product Features
 
 ### Home Page
+
 > Users are greeted with featured research studies
 <img src="assets/Research_HomePage.gif" width="100%"/>
 
 ### Login
+
 > Users can login in with either their Google, Facebook, or Github Credentials
 <img src="assets/Login.gif" width="100%"/>
 
 ### Search
+
 > Users can search for studies based on specified interests by entering a keyword in the search bar, or clicking on a tag
 
 <img src="assets/Search.gif" width="100%"/>
 <img src="assets/SearchByTag.gif" width="100%"/>
 
 ### Saved Studies
+
 > Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previously saved studies will populate until removed by user.
 
 <img src="assets/SavedStudies.gif" width="100%"/>
@@ -74,10 +79,11 @@ npm run dev
 <img src="assets/AddRemove.gif" width="100%"/>
 
 ### Form
+
 > Can enter personal Information to check against study eligibility requirements. Please note this is a practice/test application. No HIPAA violations.
 <img src="assets/Form.png" width="100%"/>
 
-# Tech Stack
+## Tech Stack
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
@@ -91,5 +97,3 @@ npm run dev
 ![Material-UI](https://img.shields.io/badge/-MUI-007FFF?logo=mui&logoColor=white&style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white&style=for-the-badge)
 ![Figma](https://img.shields.io/badge/-Figma-B2E7E8?logo=figma&logoColor=black&style=for-the-badge)
-
-
