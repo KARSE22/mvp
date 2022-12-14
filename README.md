@@ -2,8 +2,22 @@
 
 Research You is an innovative clinical research application that enables users to easily search for and be matched with local research studies they may be eligible for. With a streamlined and user-friendly design, users can quickly and easily find research studies that fit their interests and qualifications. The app allows users to save the research studies to their profile and view them at any time. I hope to add more features in the future, including making it easy for users to contact the research study teams directly, allowing for a more efficient and personalized experience. With this application, users can now easily find and participate in research studies that are right for them.
 
-## Getting Started
+# Table of Contents
 
+- [Getting Started](#getting-started)
+  - [Pre-Installation Requirements](#pre-installation-requirements)
+  - [Environment Variables Management](#environment-variables-management)
+  - [Installation](#installation)
+- [Product Features](#product-features)
+  - [Home Page](#home-page)
+  - [Login](#login)
+  - [Search](#search)
+  - [Saved Studies](#saved-studies)
+  - [Form](#form)
+
+- [Tech Stack](#tech-stack)
+
+# Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ## Pre-Installation Requirements
@@ -34,7 +48,7 @@ Compiles code
 npm run dev
 ```
 
-## Product Features
+# Product Features
 
 ### Home Page
 > Users are greeted with featured research studies
@@ -54,6 +68,7 @@ npm run dev
 > Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previosuly saved studies will populate until removed by user.
 
 <img src="assets/SavedStudies.gif" width="100%"/>
+
 > Can add or remove the saved studies
 
 <img src="assets/AddRemove.gif" width="100%"/>
@@ -62,7 +77,7 @@ npm run dev
 > Can enter personal Information to check against study eligbility requirements. Please note this is a practice/test application. No HIPAA violations.
 <img src="assets/Form.png" width="100%"/>
 
-## Built With
+# Tech Stack
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
