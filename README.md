@@ -65,7 +65,7 @@ npm run dev
 <img src="assets/SearchByTag.gif" width="100%"/>
 
 ### Saved Studies
-> Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previosuly saved studies will populate until removed by user.
+> Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previously saved studies will populate until removed by user.
 
 <img src="assets/SavedStudies.gif" width="100%"/>
 
@@ -74,7 +74,7 @@ npm run dev
 <img src="assets/AddRemove.gif" width="100%"/>
 
 ### Form
-> Can enter personal Information to check against study eligbility requirements. Please note this is a practice/test application. No HIPAA violations.
+> Can enter personal Information to check against study eligibility requirements. Please note this is a practice/test application. No HIPAA violations.
 <img src="assets/Form.png" width="100%"/>
 
 # Tech Stack
