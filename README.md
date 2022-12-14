@@ -37,22 +37,30 @@ npm run dev
 ## Product Features
 
 ### Home Page
-> Users are greeted with Featured research studies
+> Users are greeted with featured research studies
 <img src="assets/Research_HomePage.gif" width="100%"/>
 
 ### Login
 > Users can login in with either their Google, Facebook, or Github Credentials
+<img src="assets/Login.gif" width="100%"/>
 
 ### Search
 > Users can search for studies based on specified interests by entering a keyword in the search bar, or clicking on a tag
 
+<img src="assets/Search.gif" width="100%"/>
+<img src="assets/SearchByTag.gif" width="100%"/>
+
 ### Saved Studies
 > Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previosuly saved studies will populate until removed by user.
 
+<img src="assets/SavedStudies.gif" width="100%"/>
 > Can add or remove the saved studies
+
+<img src="assets/AddRemove.gif" width="100%"/>
 
 ### Form
 > Can enter personal Information to check against study eligbility requirements. Please note this is a practice/test application. No HIPAA violations.
+<img src="assets/Form.png" width="100%"/>
 
 ## Built With
 
