@@ -4,34 +4,55 @@ Research You is an innovative clinical research application that enables users t
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+## Pre-Installation Requirements
 
 ```
-Give the example
+Node v16.14.2
+NPM v8.5.0
 ```
 
-And repeat
+## Environment Variables Management
 
+This project uses [dotenv](https://github.com/motdotla/dotenv).
+
+The environment variables needed are inside the .example-env file. Simply copy the file, remove the 'example-' part of the file name and input the required values of your access tokens and port number you wish to use.
+
+## Installation
+
+Installs dependencies
 ```
-until finished
+npm install
+```
+Starts server
+```
+npm run server
+```
+Compiles code
+```
+npm run dev
 ```
 
-## Product Features 
+## Product Features
 
-## Login
+### Home Page
+> Users are greeted with Featured research studies
+<img src="assets/Research_HomePage.gif" width="100%"/>
 
-## Home Page
+### Login
+> Users can login in with either their Google, Facebook, or Github Credentials
 
-## Search 
+### Search
+> Users can search for studies based on specified interests by entering a keyword in the search bar, or clicking on a tag
 
-## Saved Studies 
+### Saved Studies
+> Users can save studies to their profile for review or access later. They are saved to their account, so upon re-entering the website, their previosuly saved studies will populate until removed by user.
 
+> Can add or remove the saved studies
+
+### Form
+> Can enter personal Information to check against study eligbility requirements. Please note this is a practice/test application. No HIPAA violations.
 
 ## Built With
 
