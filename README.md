@@ -66,7 +66,7 @@ npm run dev
 > Users can search for studies based on specified interests by entering a keyword in the search bar, or clicking on a tag
 
 <img src="assets/Search.gif" width="100%"/>
-<img src="assets/SearchByTag.gif" width="100%"/>
+<img src="assets/ChipsClick.gif" width="100%"/>
 
 ### Saved Studies
 
