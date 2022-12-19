@@ -1,4 +1,4 @@
-# Research You :microscope:
+# StudyFindr :microscope:
 
 Research You is an innovative clinical research application that enables users to easily search for and be matched with local research studies they may be eligible for. With a streamlined and user-friendly design, users can quickly and easily find research studies that fit their interests and qualifications. The app allows users to save the research studies to their profile and view them at any time. I hope to add more features in the future, including making it easy for users to contact the research study teams directly, allowing for a more efficient and personalized experience. With this application, users can now easily find and participate in research studies that are right for them.
 
